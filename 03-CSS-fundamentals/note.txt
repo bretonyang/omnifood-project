@@ -1,0 +1,132 @@
+1.  Three ways to write CSS: Inline CSS, Internal CSS, and External CSS.
+
+2.  Inline CSS: Never use.
+    Internal CSS: Used when not much css needed.
+    External CSS: Most common, since we usually need many lines of css code.
+
+3.  "rel" attribute defines the relationship between a linked resource and the current document
+
+4.  default font-size is usually 16px.
+
+5.  "descendent selector", here we select the p elements that are children to the header elements to the article element. 
+    e.g.		article header p {
+  						font-style: italic;
+						}
+		
+		However, we're encoding too much HTML structure into our CSS selectors, which can make our code hard to maintain if we change
+		our HTML in the future.
+
+6.	For styling,
+		Element selector: 
+		ID selector: Can only be used once.
+								(Actually, we never use IDs in case we need the same style in the future for other elements, but IDs can't be reused, then we still go back to classes.)
+		Class selector: Can be used multiple times.
+		 						(Always used for CSS maintainability, even if only used once, so that we're prepared for future potential changes.)
+
+7.	Ways to represent Colors,
+		RGB: rgb(0, 255, 255) -> cyan
+		RGB with transparency("alpha"): rgba(0, 255, 255, 0.3) -> cyan with 0.3 transparency
+		Hexadecimal: #00ffff (or #0ff) -> cyan
+
+		In convention, use Hex for colors, RGBA when transparency is needed.
+
+8.	Pseudo-classes: a keyword added to a selector that specifies a special state of the selected element(s).
+
+9.	No conflicting properties --> all apply
+		conflicting properties --> ID(#) > Class(.) or pseudo-class(:) > element(div, p, li, etc.) > universal(*)
+		(If there are multiple selectors, then last selector applies.)
+		(Actually !important > Inline style > IS > Class > ...)
+
+10.	How does CSS decide which rule to apply(for a property)? 
+		***https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance***
+		MDN:
+		Source order (or cascade) < Specificity < Importance
+		(1) Source order (or cascade): If multiple rules have the same specificity, the one comes last in CSS code applies.
+		(2) Specificity: By calculating points for (ID, Class, Element), compare ID points first, then Class, then Element(see link for more info).
+		(3)	Importance: !important > Inline Style
+		
+11.	A common practice is to define generic styles for the basic elements, and then create classes for those that are different.
+
+12.	Inheritance: some CSS property values set on parent elements are inherited by their child elements, and some aren't.
+								 Inheritance controls what happens when no value is specified for a property on an element.
+		(Most text related properties have inheritance.)
+		For example, if you set a color and font-family on an element, every element inside it will also be styled 
+		with that color and font, unless you've applied different color and font values directly to them.
+
+13.	Collapsing margin: when 2 margins occupy the same space, only the larger margin is visible on the page.
+
+14.	Space inside element(usually used when background-color or border exist): padding
+		Space outside element(between elements): margin
+		Vertical space: stick to margin-bottom. (be consistent)
+
+15.	Always specify width & height for images
+
+15.	Centering page -> need a container 
+
+16.	
+		***BLLOCK-LEVEL ELEMENTS***
+
+		(1) Elements are formatted visually as boxes.
+		(2) Occupy 100% of parent element's width, no matter the content.
+		(3) Elements are stacked vertically by default.
+		(4) Box model applies.
+		
+		Default: body, main, header, footer, section, aside, ul, li, etc.
+		CSS:	display: block
+
+
+		***INLINE ELEMENTS***
+
+		(1) Occupies only content's space.
+		(2) No line-breaks after or before the element
+		(3) Box model applies in a ddifferent way:
+				a.	height and width do not apply
+				b.	padding and margin apply only horizontally
+
+		Default: a, strong, em, button, etc.
+		CSS:	display: inline
+
+
+		***INLINE-BLOCK ELEMENTS***
+
+		Outside: looks like inline
+		Inside: behaves like block-level
+
+		(1) Occupies only content's space.
+		(2) Cause no line-breaks.
+		(3)	Box model applies
+
+		Default: img, etc.
+		CSS:	display: inline-block
+
+19.	
+		***NORMAL FLOW***
+
+		(1) Default positioning.
+		(2) Element is "in flow".
+		(3) Elements are laid out by their order in HTML code.
+
+		CSS:	position: relative
+
+
+		***ABSOLUTE POSITIONING***
+
+		(1) Element is removed from the flow, i.e., "out of flow".
+		(2) No impact on surrounding elements, might overlap others.
+		(3) Use top, bottom, left, or right to offset the element from its "first relatively positioned parent element (or container)".
+				(Note that the parent need to specify "position: relative", otherwise it doesn't count, and instead uses the viewport.)
+
+		CSS:	position: absolute
+
+		We rarely uses absolute position, it's mostly used for small single elements.
+
+		See more at: https://developer.mozilla.org/en-US/docs/Web/CSS/position#accessibility_concerns
+
+
+20.	::after Selector: Creates a pseudo-element that is the last child of the selected element. It is often used to add cosmetic content to an element with the content property. It is inline by default.
+
+		See more at: https://developer.mozilla.org/en-US/docs/Web/CSS/::after
+
+
+21.	Bad reference site: W3school
+		Good reference site: MDN, CSS Tricks, Stackoverflow, 

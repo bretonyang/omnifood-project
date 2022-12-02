@@ -1,0 +1,38 @@
+1.  It's a good practice to use only one <h1> heading in each page.
+    For other headings, it doesn't matter.
+
+2.  For bold word, we can add <b></b> or <strong></strong> around the word.
+    Note that <b> is actually an older HTML element, and don't have "semantic meaning".
+    Use <strong> tag for HTML5.
+
+3.  Similarly, for italic words, <i> is an old HTML element, we use <em> (emphasize) to give it semantic meaning.
+
+4.  "Attributes" are pices of information describing elements.
+    <img> or <img /> is both fine.
+
+5.  For <img /> tag, always write the "alt" (alternative) attribute, to (1)Let search engines know what's the image (2)Blind people.
+
+6.  <head> is for information that describes the document.
+
+7.  <meta> (metadata) means: data about the data.
+
+8.  To include a hyperlink to webpages: <a href="some link">text</a> (anchor)
+
+9.  A whole elements is a mess, so we need "containers" element to group things together:
+    <nav>: navigation.
+    <header>: the top part of a document or the top part of some smaller unit. 
+    <article>
+    <aside>: for things that is not the main part (e.g., article).
+    <footer>
+
+10. "Semantic elements": A semantic element clearly describes its meaning to both the browser and the developer.
+    Examples of "Non-semantic" elements: <div>, <span>
+    Examples of "Semantic" elements: <header>, <nav>, <section>, <article>, <footer>, <aside>, ...
+
+11. Use "semantic" elements to have meaning to the container (box), only use <div> when we don't want to attach meaning to certain box.
+    (In older HTML, we'd use <div> for every boxes, and use id="" to give it meaning)
+
+   Question: Why semantic elements? 
+   Answer: (1)search engine optimization (2)accessibility
+
+   When thinking of HTML, don't just only think about it's appearance in the browser, but also the meaning of the elements.

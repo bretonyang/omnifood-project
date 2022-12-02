@@ -1,0 +1,954 @@
+//////////////////////////////////////
+// Designing website
+
+1.  Check out the theory-slides of the 7 process to building a website!!!
+
+2.  The 7 process (check more on theory lecture slides):
+
+    (1) DEFINE:
+
+
+    (2) PLAN: Always plan the design based on the content, don't code a 
+              pretty design then just fill the content on it.
+
+
+    (3) SKETCH: Draw very rough design for the layouts and components,
+                just to get the ideas out.
+                (Use boxes to replace the images and text content.)
+
+                Simply have a general idea of the design is enough.
+
+
+    (4) DESIGN AND BUILD: 
+
+
+    (5) TEST AND OPTIMIZE: Many many things to test and optimize ...
+                           Learn about Search Engine Optimization if have time.
+
+    (6) LAUNCH: This basically means to upload my website files to  a 
+                "hosting platform". (e.g., Netlify)
+
+                Buy domain name.
+
+
+    (7) MAINTAIN AND UPDATE: Keep the content updated.
+
+        --> Install analytics software (Most people use Google analytics)
+            to get statistics about website users.
+
+
+
+
+
+
+//////////////////////////////////////
+// Project Planning
+
+1.  Defining our goal
+--> Get the content, images, features, and anything we want to display
+--> List sections we'll need
+--> Reordering sections and maybe combining sections according to their
+    content
+--> Design a rough sketch of each section we planned, depending on our 
+    content !!!
+    (can get inspiration from others' websites)
+--> combine the sketches and see if it works
+    (if not, design each section again)
+--> Don't have to be perfect, just get the general design idea down!
+
+
+
+
+
+
+//////////////////////////////////////
+// Project development
+
+1.  Jonas' CSS initial setup: 
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    color: #555;
+    }
+
+
+2.  Determine all the design systems (font-sizes, weights, spacing, ...)
+    --> To maintain a consistent design.
+
+    The initial systems (check out more system pdf in slides): 
+
+/************************************
+    --- 01 TYPOGRAPHY SYSTEM
+
+    - FONT SIZE SYSTEM (px)
+    10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+    - Font weights:
+    Default: 400 
+
+    - Line heights: 
+    Default: 1
+
+    --- 02 COLORS
+
+    - Primary: #e67e22
+    - Tints: 
+    - Shades: 
+    - Acccents:
+    - Greys: 
+    #555
+
+    --- 05 SHADOWS
+
+    --- 06 BORDER-RADIUS
+
+    --- 07 WHITESPACE
+
+    SPACING SYSTEM (px)
+    2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+ (We can add more values to the system as we design)
+
+***************************************/
+
+
+3.  Image Resource Websites: 
+    (1) restaurant & food: unsplash.com
+    (2) customer faces: uifaces.co
+
+
+
+
+
+
+//////////////////////////////////////
+// Responsive Design
+
+1.  Check out the theory lecture slides!!!!!
+
+2.  Brief summary: 
+
+(1) FLUID layouts
+    --> Allow webpage to adapt to current viewport width (or even height)
+    --> Use % (or vh / vw) unit instead of px for elements that should 
+        adapt to viewport (usually layout)
+    --> Use max-width instead of width
+
+(2) RESPONSIVE UNITS
+    --> Use rem instead of px for most lengths
+        (to make it easy to scale entire layout automatically)
+    --> Helpful trick: setting 1rem to 10px for easy calculations
+
+(3) FLEXIBLE IMAGES 
+    --> By default, images don't scale automatically.
+    --> Use % for image dimensions, and use the max-width property
+
+(4) MEDIA QUERIES
+    --> Change CSS styles on certain viewport widths 
+        (called breakpoints)
+
+3.  RULE OF THUMB
+    --> Create a fluid layout, responsive units, flexible images from 
+        the very beginning!!!
+    --> Write media queries only at the end of building a certain page 
+        or a certain component.
+
+
+4.  "Desktop First" vs. "Mobile First"
+
+    (1) Desktop First
+        --> Start writing CSS for the desktop (large screen)
+        --> Then, media queries shrink design to smaller screens
+        --> More beginner friendly
+
+    (2) Mobile First
+        --> the opposite of desktop First
+        --> since most websites are browesed on a mobile, this is 
+            actually the more used way now adays.
+
+
+
+
+
+
+
+//////////////////////////////////////
+// rem and max-width
+
+1.  max-width
+
+    --> If the container width is larger than the specified 
+        max-width, then the width of the container is fixed to the 
+        specified max-width.
+
+    --> If the container's width is less than the specified max-width, 
+        then the width will be 100% of the parent element's width.
+
+    (In short, max-width make the element have a maximum width of the 
+    specified value, so if its width becomes larger than the max, it 
+    will simply shrink its width, and not surpass the maximum.)
+
+
+2.  rem 
+
+    --> root element's font-size.
+
+        (root of the document is the HTML document, so unless we specify the font-size on the html element, otherwise html element's font-size is always the browser default, 16px.)
+
+        (So, 1rem = 16px)
+
+    --> CHanging the font-size only on the html element, then all length 
+        defined using rem, will automatically change.
+        (Good for design of other screen sizes)
+
+    --> We want to set font-size to 10px on html element, so that it's 
+        easier for us to calculate the unit. (1rem = 10px)
+
+        But simply set the font-size to fixed 10px will not allow people 
+        to change their browser default font-size.
+
+    --> CONVENTION: Set html{ font-size: 62.5%; } !!!
+        
+        (10px / 16px = 62.5%)
+        (Using percentage of user's browser font-size setting.)
+
+
+
+3.  The brower will convert all units to px before displaying
+    (since px is what's really displaying the page)
+
+
+4.  From now on, we'll use "rem" instead of "px" for all length unit.
+
+
+5.  max-width: for desktop-first developers
+    min-width: for mobile-first developers
+
+    check out: https://stackoverflow.com/questions/16647380/max-width-vs-min-width
+    
+
+
+
+
+
+
+
+//////////////////////////////////////
+// Hero Section
+
+1.  CONVENTION: Use "classes" to select everything in CSS
+    (more consistency, and flexibility)
+
+
+2.  buttons: for actual action of the user.
+    anchors: for links to go other place.
+
+
+3.  We usually use the same layout (grid) for larger page components.
+
+
+4.  It's ok to use px for small units.
+    e.g. letter-spacing: -0.5px
+
+
+5.  Don't forget in order to make padding work for <a>,
+    we need to change it to inline-block
+
+6.  Since we're using border-box model
+    --> To add border to a button, if we used border property, 
+        we'll actually create extra space which pushed other elements
+    --> we should add border inside element
+    --> Use box-shadow trick 
+        (box-shadow: inset 0 0 0 3px #fff;)
+
+7.  Animation on button: We can use the "transition" property on the 
+    original state of the button (i.e. link and visited)
+
+    --> allow us to transition between 2 values using animation
+    --> we need to specify "what to animate" and "duration" for the 
+        transition property.
+        (e.g. transition: background-color 0.3s)
+        (e.g. transition: all 0.3s)
+        (CONVENTION: we often use 0.3s for such button animation)
+
+    --> can also state a 3rd value to change the "type" of animation.
+
+
+    RULE OF THUMB: Always put the transition property on the original 
+                   "state".
+
+
+8.  To add space between two buttons, we have the following ways
+
+    (1) Add margin-right to .btn--full.
+        --> But we want to use this class for other buttons on the page
+            too, which we might not want margin-right.
+
+    (2) Wrap the two buttons in a flex or grid container.
+        --> Too much work for such a simple task
+
+    (3) *** Use a "helper class" ***
+        --> A generic and reusable class that can be added to multiple 
+            elements for the same style.
+
+        --> When using helper class, we really want the style to be 
+            applied, not affected by conflicting rules
+        
+        --> Always add "!important" 
+
+            (to ensure we really apply it)
+
+        --> Mostly used to define margins
+
+
+
+9.  Convention
+    --> Use grid: If we care about column size
+    --> Use flex: If we don't care its size, and let content Determine
+                  the size.
+
+
+10. We usually don't specify width for img, and let it automatically adjusted,
+    but safari has a bug about auto adjusting, so here we specify width too.
+
+
+11. CONVENTION (Semantic HTML): 
+    (1) Use <header> for the logo, nav, etc. and anything that we might want to 
+        appear at the top of multiple pages as a header of our pages.
+    
+    (2) Use <main> to wrap up the main content of the page.
+        This should contain contents that only appear in this page.
+
+    (3) Use <footer> for anything we want to have as the footer across multiple 
+        pages of ours.
+
+
+    Every modern website divide their page into the above semantic parts
+    e.g. https://academind.com/ 
+    
+
+12. CONVENTION: For sticky headers (like we did here), we would specify a fixed height for the header. 
+                
+    (check more on MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky_positioning)
+
+
+13. CONVENTION: For links in the navigtion, we usually see them as a list of 
+                links, so the more semantic way is to use a <ul> with many <li>
+                containing <a> links, instead of just a bunch of <a> tags.
+
+
+14. Question: Why use ul for links instead of just anchors?
+
+    Ans: https://stackoverflow.com/questions/36811224/why-do-navigation-bars-in-html5-as-lists#:~:text=By%20using%20a%20ul%20%2C%20it's,all%20available%20navigation%20links%20and 
+
+    (Main reasons: Hierarchy, accesbility, semantic, ...)
+
+
+15. Use AND selector to increase the specificity of cta button in main-nav.
+    (e.g. .main-nav-link.nav-cta:link)
+
+
+
+
+
+
+
+
+//////////////////////////////////////
+// Reusable Grid
+
+1.  We don't want to write the same grid property again and again.
+    --> Settign up a reusable and generic grid class
+        (e.g. class="grid")
+ 
+    --> Use variation classes of the "grid" class to indicate defferent grids
+        (e.g. class="grid--2-cols")
+        (e.g. class="grid--3-cols")
+        (e.g. class="grid--4-cols")
+
+        .grid {
+            display: grid;
+            gap: 9.6rem;
+        }
+
+        .grid--2-cols {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid--3-cols {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+
+    --> We often exports different styles like the column here, to different
+        variation classes to create these reusable classes.
+
+
+2.  Centering an container is also what we often do for multiple times.
+    --> put it in a reusable class.
+    
+    --> CONVENTION: Use "120rem" or "114rem" for centered container max-width.
+
+
+3.  Question: Why don't we use the reusable container class on hero-section?
+
+    Ans: We want hero section to be wider than the content.
+        (Visually prettier, but still depends on different style we want)
+
+
+4.  For hero section: can use a more special style and classes.
+
+    For content sections: try to use reusable classes to be consistent
+
+
+
+
+
+
+
+//////////////////////////////////////
+// How it works section
+
+1.  Why not use align-self: center and justify-self: center on the "step-img-box" 
+    to center the image? 
+
+    Ans: Because the image is not really 100% of the step-img-box div, so the 
+    align-self and justify-self will center the div, but the image is only 35%
+    of the div's width, which makes it still not centered.
+
+    (Actually, if the width of img was 100%, then it will center the image.)
+
+    --> Use Flexbox on the div to center the content(image) inside of it.
+
+
+2.  to center step-text-box, we can use: 
+
+    (1) Flexbox
+        --> Too much work for such small task
+            (need to change direction and ...)
+
+    (2) align the grid
+        --> can set align-self on items themselves
+        
+        --> or set align-items on another new reusable grid class: grid--center-v
+            (v for vertical)
+
+            (or set align on indivisual items, or on the grid, or ...)
+
+
+3.  Question: why can we use align grid to center text in text-box and can't use 
+              justify to center image inside img-box
+
+    Ans: Since text-box takes the whole width of the box.
+        --> so, centering the box is the same as centering the text.
+
+        --> Actually vertically (i.e. align-items) the image is not affected, 
+            since the image's size is determined by the width of the img-box,
+            and the width of the img-box is always 1fr.
+
+            Although, if we were to use justify to center the image, then the 
+            img-box is centered horizontally, which results in decrease in 
+            width, and thus the image's width is even less, according to the 
+            new width of img-box.
+
+        --> Thus, 
+            we use flexbox to center image inside img-box.
+            we use align-items to center text vertically.
+
+4.  Question: Why didn't align-items: center change the width of image?
+              (if we use justify-content: center, then width of img is changed)
+
+    Ans: Since it doesn't change the width of the img-box container, which will 
+         remain a width of 1fr, and therefore the width of img is still 35% of 
+         1fr (the same width across all grid-items).
+
+         --> this is why all images in the grid have the same height.
+             (since their width is the same, and height is adjusted automatically,
+             resulting in the same height.)
+
+
+5.  We want to make a circle of some color in the background of img
+
+    --> use ::before and ::after to make extra elements, and not 
+        messing up the html code
+
+    --> make them into a square first. 
+
+        Note that settign width and height both to 60% won't work,
+        Reason: (1)  To set a percentage height, its parent element(*) must 
+                     have an explicit height
+                     (check out: https://stackoverflow.com/questions/1622027/percentage-height-html-5-css:)
+
+                (2) Even if we set parent element a height, the height will
+                    not always equal to the width to make a square.
+
+
+    --> use padding-bottom: 60% trick!
+
+
+        
+6.  Note that padding defined using % unit is actually refering to width 
+    of its containing block.
+
+    --> the padding-bottom: 60% is 60% of its parent element's width!
+
+    (See: https://developer.mozilla.org/en-US/docs/Web/CSS/padding-bottom)
+
+
+7.  Use z-index to put the circle below the img.
+
+    (See: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+
+
+8.  The flex property also applies to ::before and ::after.
+    (check out style.css comment)
+
+
+
+
+
+
+//////////////////////////////////////
+// Featured in Section
+
+1.  "filter" property
+    --> many functions to play with
+
+
+2.  "opacity" property
+
+
+
+
+
+
+
+//////////////////////////////////////
+// Meals Section
+
+1.  Design Pattern:
+
+    Calories: 650 --> BAD 
+
+    650 calories --> BETTER
+
+
+2.  Using "tags" for "category" info.
+
+
+3.  Using another type of icon:
+
+    --> ionicons
+    --> Uses JavaScript to inject icons into our code
+    --> check out their "Usage" page for how to use.
+    --> each iconpacks work differently, so might need to 
+        experiment. (not always stroke, might be color)
+
+
+4.  CONVENTION: Reset the <strong> element's font-weight
+
+    --> by default it's 700, which in many cases is too bold.
+
+
+5.  "overflow": overflow CSS shorthand property sets the desired 
+    behavior for an element's overflow — i.e. when an element's 
+    content is too big to fit in its block formatting context — 
+    in both directions.
+
+    See: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+
+    basically, overflow controls what happens when the content 
+    is larger than the element's size.
+
+
+6.  When using multiple images that needs to align each other
+    --> make sure their aspect ratio is the same.
+    --> otherwise the ratio is going to be messed up
+
+
+7.  For bottom line of links, we usually don't use the default text-decoration.
+
+    --> Instead, we use a "border-bottom to achieve a better and more flexible 
+        underline. (Often add padding-bottom to increase gap between text and line)
+
+    --> can use "currentColor": The value of the 'color' property.
+        To automatically set the color of border to text color.
+        (So the border can have the same color if we change color for hover state)
+
+
+8.  To make the border-bottom disapear, we can't simply set "border-bottom: none"
+
+    --> Since the whole page will move by border's px
+
+    --> instead we still want border there, but with a "transparent" color
+
+    --> transparent: Fully transparent. This keyword can be considered a shorthand 
+        for rgba(0,0,0,0) which is its computed value
+
+
+9.  Moving element up on hover state:
+
+    --> .meal {
+          box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.1);
+          transition: all 0.4s;
+        }
+
+        .meal:hover {
+          transform: translateY(-1.2rem);
+        }
+
+
+
+
+
+
+
+
+
+///////////////////////////////////
+// Testimonial Section
+
+1.  Often use <figure> for: 
+    (1) Testimonial
+    (2) image with caption
+        --> <figure class="gallery-item">
+              <img
+                src="img/gallery/gallery-1.jpg"
+                alt="Photo of nicely arranged food"
+              />
+              <figcaption>Caption</figcaption>
+            </figure>
+    (3) ...
+
+
+2.  <figcaption> only used inside <figure>
+
+
+3.  Since <img> are inline-block
+    --> white spaces are around them by default 
+        (which is annoying)
+
+    --> change to block element.
+
+
+4.  TRICK: If we need to size defferent fraction of grid-column
+
+    --> We can think of fr as percentages
+        (Since their actual value doesn't matter, what matters is their
+        relative value, so we can imagine combined 100 is 100%)
+
+    --> grid-template-columns: 55fr 45fr;
+
+
+
+
+
+
+//////////////////////////////
+// Pricing Section
+
+1.  "list" is often a great reusable class candidate.
+
+
+2.  We want margin-bottom for every "grid" classes
+    (So that we have spacing between grids inside same section)
+
+    --> But, this creates extra space for the last "grid" element.
+
+    --> use .grid:last-child { margin-bottom: 0; } 
+
+    --> Allowing multiple grids in same section!!!
+
+
+    --> ALTERNATIVE: We can just use not() on the grid class
+
+        .grid:not(:last-child) {
+            margin-bottom: 9.6rem;
+        }
+
+    --> not(): The negation pseudo-class, :not(X), is a functional notation taking a simple selector (excluding the negation pseudo-class itself) as an argument. It represents an element that is represented by its argument.
+
+        (Note that we still need ":" inside not())
+
+    --> With not(), we can replace ALL CSS that needs last:child
+
+
+3.  Keep in mind that the icon might behave differently, 
+    in terms of box-sizing and display property.
+
+
+4.  Adding "grid" class to the plan-details
+
+    --> Make it have the same margin-bottom (same spacing)
+        to maintain consistency of spacing across whole page
+        (Though grid sound weird to be used here)
+
+    --> but now margin become too large between pricing and 
+        plan-details
+
+    --> Use a helper class to override the margin-bottom of 
+        pricing
+
+
+
+
+
+
+
+//////////////////////////////
+// CTA Section
+
+1.  background-image: linear-gradient()
+    
+    --> Often used for background color that needs to 
+        displayed with images.
+
+
+2.  Using background-image: url() is a bit header
+
+    --> Since we're in css folder, and has no path to 
+        img folder
+
+    --> Recall the command line: .. makes us go one level
+        up to the parent folder, then we can go background
+
+    --> "../img/eating.jpg"
+
+    (If 2 levels up: "../../img/something")
+
+
+3.  background-size: cover;
+
+    --> Scale the image, while preserving its intrinsic aspect ratio (if any), to the smallest size such that both its width and its height can completely cover the background positioning area
+
+    (Basically, it automatically adjust the image to fit 
+    the background area, while having the same aspect 
+    ratio and cut out the part that can't fit in.)
+
+
+4.  background-position: center;
+
+    --> Sets the position of baground (image, gradient, )
+
+
+5.  Recall that we can do this: 
+
+    background-image: linear-gradient(to bottom right, #eb984e, #e67e22),
+    url(../img/eating.jpg);
+
+
+
+6.  New HTML attributes: 
+    (Both used when reading html can't tell what it is)
+
+    (1) role="img"
+        --> specifies the role of an element
+        --> for screen readers
+
+    (2) aria-label="Woman enjoying food"
+        --> like an "alt" attribute
+            (used for backgound-image, etc.)
+
+
+        --> for screen readers
+
+
+7.  img vs. background-image:
+
+    See: https://stackoverflow.com/questions/492809/when-to-use-img-vs-css-background-image
+
+
+8.  Form in HTML: 
+
+    --> <form> is just a box for the imput elements
+
+9.  Usually, we build like this:
+
+<form>
+  <input type="text">
+  <input type="email">
+  <button>Sign up</button>
+</form>
+
+
+10. For the submit button, we can use:
+
+    --> <input type="submit">
+        (We always need to specify type so the input knows what to do, in this case, submit.)
+
+    --> <button></button>
+        (When using a button, the input will automatically be submitted when clicked)
+
+
+11. We can only collect data with HTML, but to access the data, we'll need backend server.
+
+    --> On the HTML, the <form> is just for sending data to the backend.
+
+    --> To send the data, we can define the "action" attribute, and set the URL to where the data should be sent to.
+
+    --> The URL is the Back-End server where we want the data to be sent to
+
+    
+12. We can use "placeholder" for giving example of the expected input.
+
+
+13. Use <label> tag for giving name of the input field
+
+    --> Give the input of the label tag an "id"
+
+    --> Link the <label> to the <input> via for="id" attribute in the <label> tag.
+
+    --> So that we can automatically focus the input field when we click the label content on the page.
+
+
+14. Select box:
+
+    --> <select> tag, with <option> tags inside of it.
+
+    --> Similar to <input> tag, but contains <option> tags.
+
+    --> Can also use <label> and "id"
+
+    --> We need to specify the "value" attribute in <option> tag
+
+    --> Since the <option> tag's content is only for people to select at, so it needs something to send to backend, such that we can know what option user select.
+
+        (the "value" attribute's content is what the backend actually receives)
+
+    --> Usually the first <option> tag has value="", i.e., empty value, since we usually want to display some select rule like: "Please choose one option:" on the first option.
+
+    --> By doing this (value=""), we ensure that user can't select this option, since it has empty value, the HTML won't allow user to select this option.
+
+
+15. PRACTICE: add the "required" attribute to the <input>
+
+    (Note that this attribute has no value.)
+
+
+16. CONVENTION: Group the <label> and <input> or <select> tags together in a <div> to separate them.
+
+
+17. When styling inputs, we can of course add a class to it, but since they already have tons of attributes, adding a class just gets more not readable.
+
+    --> Simply use the descendent selector to select <input> inside <form>.
+
+
+18. <input>, <select>, <button>, etc. does NOT inherit the font-family from body
+
+    --> Use "inherit" keyword to FORCE them inherit.
+
+    --> font-family: inherit;
+
+    --> Allows us to specify inheritance. 
+    
+    --> It works on both inherited and non-inherited properties!
+
+
+19. placeholder
+    --> The ::placeholder CSS pseudo-element represents the placeholder text of a form element.
+
+
+20. The <button class="btn"></button> doesn't get styled, why?
+
+    --> since it has no href attribute, so the .btn:link, .btn:visited, etc., does NOT apply.
+
+    --> Sol: add .btn to the 
+
+
+21. NOTE: Form elements don't inherit font settings, you have to set these properties manually.
+
+    (form elements: input, button, textarea, select, ...)
+
+
+22. When pressing "tab" on the page, the focus will make a blue outline around the buttons, links, and inputs, etc.
+
+    (For accesbility for people who can use keyboard only)
+
+    --> ALWAYS remember to style this outline!!!!
+
+    --> Set the "outline" property in "focus state" to something else.
+        (Global reset)
+
+    --> Note that forms works differently, so we'd have to manually reset the style on forms.
+
+    --> .cta *:focus {
+          outline: none;
+          box-shadow: 0 0 0 8px rgba(253, 242, 233, 0.5);
+        }
+
+23. IMPORTANT: The "name" attribute for inputs and selects.
+
+    --> It's a REQUIRED attribute for data to be submitted to server-side with the form!!!
+
+    --> ALWAYS specify the "name" attribute in input & select!!!
+
+    --> "id" is just for <label>'s "for" attribute
+
+    See: https://stackoverflow.com/questions/3051501/html-forms-are-name-and-id-required
+
+    And: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name
+
+
+24. for the FIRST option in <select>, set:
+
+    --> disabled: make the option uncheckable.
+        (but this makes the default chosen option the second option, which then doesn't show the desired text in the first option on the select element, since the selected option is no longer first option.)
+
+    --> selected: If present, this Boolean attribute indicates that the option is initially selected. If the <option> element is the descendant of a <select> element whose multiple attribute is not set, only one single <option> of this <select> element may have the selected attribute.
+
+    --> hidden: hide the element from showing
+
+    --> value="": won't submit this data to server
+
+    See: https://stackoverflow.com/questions/3518002/how-can-i-set-the-default-value-for-an-html-select-element
+
+    Example: 
+    <select>
+      <option value="" selected disabled hidden>Choose here</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+      <option value="4">Four</option>
+      <option value="5">Five</option>
+    </select>
+
+
+25. FORM STYLING TUTORIAL: 
+    (1) https://www.youtube.com/watch?v=-sMXE7E3R3M 
+    (2) https://www.youtube.com/watch?v=okbByPWS1Xc (include checkboxes)
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////
+// Footer Section
+
+1.  <address>: The address element represents the contact information for its nearest article or body element ancestor.
+
+
+2.  Can use new syntax inside href property of anchor: 
+
+    <a href="tel:415-201-6370">415-201-6370</a>
+    <a href="mailto:hello@omnifood.com">hello@omnifood.com</a>
+
+    (These will auto open the app to action)
+
+
+3.  Flexbox: https://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties
+
+    (Note: there are NO justify-self in flexbox)

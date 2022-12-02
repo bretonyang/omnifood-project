@@ -1,0 +1,210 @@
+/////////////////////////////////////
+// Accordion
+
+1.  *** In order to work with JavaScript to open the items ***:
+
+    (1) Set all items to default closed state.
+        (grey text, hidden content, ...)
+
+    (2) Add special class to the item we want to open, such that all open styles are back.
+        (display: block, color: , ...)
+
+        Remember to first select the special class, then its child element we want to style.
+        (so we can open an item simply by adding that class to it)
+
+    (3) Can use JavaScript to ...
+
+
+2.  Note how we use the techniques:
+
+    (1) use flex to build 1-d rows (list)
+
+    (2) use grid to build layout
+
+    (3) Use open class for accordions
+
+
+
+
+/////////////////////////////////////
+// Carousel
+
+1.  Use transform: scale(value) for scaling the image bigger or smaller.
+
+    scale(1) = the same size as defined
+    scale(1.5) = 1.5 the size
+
+2.  Using top: 50%, actually moves the element's top-left corner (not the center) to 50% of parent container's heigth. 
+    (which means its not centered)
+    (Note that "top" is in relation to PARENT ELEMENT)
+
+    Use transform: translate(0, -50%), to translate the element by -50% of element's actual height vertically.
+    (0 means no horizontal translate)
+    (Note that "translate" is in relation to ELEMENT ITSELF)
+
+3.  Techniques:
+
+    (1) Set button to flexbox to center icon inside button
+
+    (2) Set the following to center button in the left of carousel:
+        .carousel {
+          position: relative;
+        }
+
+        .btn--left {
+          position: absolute
+          left: 0;
+          top: 50%;
+          tranform(-50%, -50%);
+        }
+
+3.  When creating dots, even though we don't need to specify any content for the button,
+    we should still leave a space, but simply leaving empty space is hard for us to see it, 
+    so we use a HTML entity: &nbsp; (NonBreakingSpace)
+
+4.  RULE OF THUMB: Use one general class for common parts.
+                   Use special classes for special state or style element.
+
+
+
+
+/////////////////////////////////////
+// Table
+
+1.  tr: table row
+    td: table data
+    thead: table header
+    tbody: table body
+    th: table header cell(center by default)
+
+2.  Use border-collapse: collapse, to put close border together (as example did).
+
+3.  We still need border-collapse: collapse, to help us cancel the weird white border (table's border-spacing).
+
+4. :nth-child(n) selects every element that is the nth child of its parent.
+
+5.  Define the width for the th in thead, then the rest will automatically adjust.
+
+6.  Use height and width, instead of padding for empty space in buttons.
+    (more clean, readable, and can really make a square, and hence a circle)
+
+7.  Don't want to define the width? 
+    ---> Use flexbox on the container (body) to center.
+
+8.  Generally, there are 3 problems that CSS naming conventions try to solve: 
+    (1) To know what a selector does, just by looking at its name.
+    (2)To have an idea of where a selector can be used, just by looking at it.
+    (1)To know the relationships between class names, just by looking at them.
+
+    Naming Convention: BEM naming,
+
+    (1) -- for strings
+    (2) B: block, E: element, M: modifier, 
+        we use .block__element--modifier
+    
+    e.g. .page-link--red
+         .page-link--current
+         .nav--secondary
+         .nav__header (Don't use this, not so common used)
+         .main-header (Use this instead)
+         .nav-header (even this is fine)
+
+9.  Example of the AND selector: .page-link.page-link--current
+
+    (Notice that we have no space between two selectors)
+    (We can use this to have higher specificity of (0, 2, 0))
+
+10. Don't forget that pseudo-class count as one class selector too!
+    (so .page-link:link has specificity (0, 2, 0))
+
+11. List of font-awesome content: https://astronautweb.co/snippet/font-awesome/ 
+
+
+
+
+/////////////////////////////////////
+// Hero Section
+
+1.  
+    (1) building from scratch, we usually start by building the elements 
+        according to their semantic meaning, and whether we need a container.
+
+    (2) Then, we style the fonts, margins, and some other spacings.
+
+    (3) Style some more spacings, and some small elements.
+
+    (4) Center the contents. (Or any layout we want)
+
+    (5) Final adjustments.
+
+
+2.  We often have a container class to center the content, and we usually
+    apply that class to not the <header>, <section>, ..., but the <nav>, 
+    <div>, ..., inside of it.
+
+    (Since we don't want to center the entire section, only the content, 
+     imagine if we need background-color for the whole page section.)
+
+
+3.  vh: percentage of the viewport's height.
+    vw: percentage of the viewport's width. (Rarely used)
+
+
+4.  To scale image to fit page, most programmers uses: 
+
+    background-size: cover;
+    --> automatically sizes the image to cover the entire element.
+
+    (we rarely use contain)
+
+
+5.  To darker the background-image, CSS has no easy property to set that,
+    instead, we need to set a stack of backgroun-images, where the first 
+    background-image is a gradient that is transparent.
+
+    --> background-image: linear-gradient(), url(hero.jpg);
+    --> creates a stack where gradient is on top of the image.
+
+
+
+
+/////////////////////////////////////
+// App Layout
+
+1.  <menu>: A semantic tag for menu with menu buttons.
+
+    --> Usually we'd use <nav>, only use <menu> when
+        building web application.
+
+2.  margin-left: auto; The auto keyword will give the left 
+    side a share of the remaining space.
+
+
+3.  We can use the following to center the text in an element
+    , because flexbox treats text as flex items.
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+4.  overflow-x: Specifies the handling of overflow in the 
+                horizontal direction.
+
+    overflow-y: Specifies the handling of overflow in the 
+                vertical direction.
+
+    overflow: Shorthand for setting 'overflow-x' and 
+              'overflow-y'
+
+5.  Simply setting overflow: scroll; will not do the job 
+    (if we use flexbox)
+
+    --> Since flex-shrink is 1 by default, so items will 
+        shrink to fit the page, instead of adding scroll
+
+    --> set flex-shrink: 0; for all flex items.
+
+
+6.  Common practice: We also use "overflow: hidden;" all 
+    the time to hide the overflown items.

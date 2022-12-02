@@ -1,0 +1,275 @@
+///////////////////////////////////
+// Intro: Overview
+
+1.  <figure>: semantic html tag, usually used for: images, code snippets, quotations, product cart.
+
+2.  <section>: semantic html tag
+
+3.  <blockquote>: semantic, indicates that the enclosed text is an extended quotation.
+
+4.  <span>: A generic inline container for phrasing content.
+            It should be used only when no other semantic element is appropriate.
+            Similar to <div> element, but <span> is inline.
+
+5.  For product carts, we can use <figure> or <article> is both ok!
+    (figure more prefered)
+
+
+
+///////////////////////////////////
+// Colors and Typography
+
+1.  Tools: 
+
+    (1) Google Fonts: https://fonts.google.com/?query=inter
+
+    (2) Open Color: https://yeun.github.io/open-color/ 
+
+    (3) Coolors: https://coolors.co/
+
+    (4) 
+
+2.  Common to set button uppercase.
+
+3. Remember to check color contrast between text and background-color of at least 4.5.
+
+3.  Adjust the following according to need:
+    (1) font-size
+    (2) letter-spacing
+    (3) line-height
+    (4) text-shadow
+    (5) color
+
+///////////////////////////////////
+// Images 
+
+1.  Types: product photos, storytelling photos (most used), illustrations, patterns.
+
+2.  Use original images, or original-looking stock images.
+
+3.  Free images and illustrations Websites:
+
+    (1) Unsplash (image): https://unsplash.com/
+
+    (2) Pexels (image): https://www.pexels.com/
+
+    (3) DrawKit (illustration): https://drawkit.com/
+
+    (4) unDraw (illustration): https://undraw.co/illustrations
+
+4.  How to use images: 
+
+    (1) Show REAL people in image
+
+    (2) If necessary, crop the image to fit my message
+
+    (3) Experiment combining photos, illustrations, and patterns.
+
+5.  Text on images:
+
+    (1) Darker or brighten the image. (completely or partially, using a gradient)
+
+    (2) Position text into neutral image area.
+
+    (3) Put text into a box. (maybe add some opacity to the box)
+
+6.  Technical details: 
+
+    (1) To account for high-res screens, make image dimensions 2x their displayed size.
+        (e.g., if visible: 300x300 px, original image needs to be 600x600 px)
+
+        a. Scale factor: Actual pixels the screen has / Pixels represented on screend
+
+        b. On high-res screens, scale factor is 2x or even 3x, on "normal" screens, it's 
+           1x. (1 physical pixel = 1 design pixel)
+
+    (2) High-res images --> large file size
+        So, we should compress images for lower file size and better performance.
+
+        --> Squoosh: https://squoosh.app/
+
+    (3) When using multiple images side by side, make sure all have exact same dimensions
+
+
+
+
+///////////////////////////////////
+// Icons
+
+1.  Use good icon pack: 
+
+    (1) Phosphor icons: https://phosphoricons.com/ 
+
+    (2) ionicons: https://ionic.io/ionicons
+
+    (3) ICONS8: https://icons8.com/ 
+
+    (4) heroicons: 
+
+2.  Use only ONE ICON PACK, don't mix icon packs!!!
+
+3.  Use SVG icons (best) or icon fonts. Don't use bitmap image formats (.jpg and .png)!
+
+    (since bitmaps don't scale, might get blurry on high-res screens)
+
+4.  Adjust to website personalities (roundness, weight, filled/outlined, ...)
+
+5.  When to use icons? 
+
+    (1) To provide visual assistance to text. (to help understand text)
+
+    (2) For product feature blocks. (describe features of product or service)
+
+    (3) Use icons associated with actions, and label them 
+        (don't mix elements of text and unlabeld icons)
+
+    (4) As bullet points
+
+6.  How to use? 
+
+    (1) adjust the color of the icon to your need (stroke / fill property)
+
+    (2) icons need to make sense with the text
+
+    (3) If needed, enclose icons in a shape
+
+7.  For svg icons, we can just paste the code to html file
+
+
+
+///////////////////////////////////
+// Shadows
+
+1.  shadow can be used on text and box.
+
+2.  serious / elegant ---> creative / playful
+       less shadows   --->   more shadows
+
+3.  Don't overuse shadows!
+
+4.  Make shadows light, not too dark!
+
+5.  Use small shadows for smaller elements that should stand out. (draw attention)
+
+6.  Use medium-sized shadows for larger areas that should stand out a bit more.
+    (common used on carts)
+
+7.  Use large shadows for elements that really should float above the screen.
+    (pop-ups, floating nav, ...)
+
+8.  Experiment with changing shadows on mouse interaction (click and hover).
+
+9.  Experiment with glows (colored shadows)
+
+
+
+
+///////////////////////////////////
+// Implementing Shadows
+
+1.  box-shadow: offset-x | offset-y | blur-radius | spread-radius | color ;
+
+    (spread-radius is optional, 0 by default)
+    (Normally we omit spread-radius, making it 0)
+
+2.  Can even add multiple shadows.
+
+3.  See MDN for more info: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+
+4.  blur-radius: The larger this value, the bigger the blur, so the shadow becomes bigger and lighter.
+                 If not specified, it will be 0 (the shadow's edge is sharp).
+
+    spread-radius: Positive values will cause the shadow to expand and grow bigger, negative values will cause the shadow to shrink.
+                   If not specified, it will be 0 (the shadow will be the same size as the element)
+
+
+
+
+///////////////////////////////////
+// Border-Radius
+
+1.   serious / elegant  ---> creative / playful
+    less border-radius  ---> more border-radius
+
+2.  Common on: botton, image, around icon, standout sections
+
+3.  See more: https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius 
+
+
+
+
+///////////////////////////////////
+// Visual Hierarchy: text
+
+1.  Emphasize: titles, sub-titles, links, buttons, data points, icons, etc.
+
+2.  De-emphasize: labels, secondary/addtional information, etc.
+
+
+
+///////////////////////////////////
+// Visual Hierarchy: components
+
+1.  using: background-color, shadow border, etc.
+
+2.  Emphasize: testimonials, call-to-action sections, highlight sections, 
+    preview cards, forms, pricing tables, important rows/columns in tables, etc.
+
+
+
+
+///////////////////////////////////
+// UX design: layout
+
+1.  Don't design complicated layouts
+    Don't reinvent the wheel, use patterns that users are familier with.
+    
+    (i.e., don't try to be original and creative, since we're not UI professionals, just be simple)
+
+2.  Make call-to-action the most prominent.
+
+3.  Use blue and underline ONLY for LINKS!
+
+4.  Make animations with purpose and formats.
+
+5.  In forms, align lables and fields in a single vertical line.
+    (easier to scan)
+
+6.  Offer users feedback for all actions.
+    (form errors, success, etc.)
+
+7.  Place action buttons where they should make an action.
+
+
+ 
+
+///////////////////////////////////
+// UX design: content
+
+1.  Use descriptive, keyword-focused, headline on main page.
+    Don't be vague, or fancy.
+
+2.  Don't include fluff contents, be efficient and clear with the content.
+
+3.  Use simple words.
+
+4.  Break up long text with sub-headings, images, blockquotes, bullet points, etc.
+
+
+
+
+///////////////////////////////////
+// Website Design
+
+1.  Check out the theory lectures pdf file for the 7 personalities!
+
+2.  Taking good parts from others' websites and adapt them to my own.
+
+    Tools to watch others' pages:
+
+    (1) Land-book:
+    (2) One Page Love: inspiration
+    (3) awwwards: menu --> collections --> websites
+    (4) screenlane: for indiviual components
+
+

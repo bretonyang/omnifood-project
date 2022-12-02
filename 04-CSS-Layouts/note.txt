@@ -1,0 +1,269 @@
+1.  Layout is the way text, images, and other content are placed and arraged on a webpage.
+    Layout gives the page a visual structure, into which we place our content.
+
+2.  (1) Page Layout: layout of the biger pieces of content.
+    (2) Component Layout: layout of the small components of the bigger pieces
+
+3.  Question: How can we build layouts in CSS?
+
+    Ans:  (1) Float Layout: The old way of building layouts of all sizes, using the float css property.
+                            Reraly used in modern webpages.
+
+          (2) FlexBox Layout: Modern way of laying out 1-dimensional row without using float.
+                              Perfect for component layouts (simpler ones).
+
+          (3) CSS Grid: For laying out content in a fully-fledged 2-dimensional grid.
+                        Perfect for page layouts and  complex components.
+
+4.  The float property makes the element out of flow(similar to absolute positioning, i.e., it overlaps other elements) 
+    and all other elements will "float" around it.
+
+5.  Floats(compare to absolute position):
+    
+    (1) Element is "out of flow"
+    (2) Text and inline elements will wrap around the floated element
+    (3) The container will not adjust its height to the element, might cause collapsing heights
+
+    float: left
+    float: right
+
+6.  Keep in mind that float is outdated, so no need digging in how everything works.
+
+7.  The original Box Model calculates the total width and height too unrealistic:
+
+    Final element width = border-right + padding-right + width + padding-left + border-left
+    Final element height = border-top + padding-top + height + padding-bottom + padding-left
+
+    CSS:  box-sizing: content-box;
+
+8.  RULE OF THUMB: Always use Border Box !!!
+
+    Final element width = width
+    Final element height = height 
+    (Note: this means adding paddings and borders will reduce the width of content area --> not a problem!)
+
+    CSS:  box-sizing: border-box;
+    (We usually apply this to every element by using putting in * selector)
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+// FLEX BOX: Intro
+
+1.  Horizontally each of the flex items occupies exactly the space for its content.
+
+2.  Vertically all flex items are the height of the tallest element by default.
+
+  (1) align-items: Aligns flex items along the cross axis of the current line of the flex container.
+    (center, flex-start, flex-end, stretch, ...)
+
+  (2) justify-content: Aligns flex items along the main axis of the current line of the flex container.
+    (center, space-between, ...)
+
+
+
+////////////////////////////////////////////////////////////
+// FLEX BOX: Overview
+
+1.  What is flexbox?
+
+    (1) A set of related CSS properties for building 1-d layouts.
+    (2) Automatically divide the empty space inside a container element by its child elemenets.
+    (3) Easy to automatically align items to one another horizontally and vertically inside a container.
+    (4) Solves the problem of vertical centering and creating equal-height columns.
+    (5) Perfect for replacing floats.
+
+2.  Terminology:
+
+    (1) The element on which we want to apply flexbox is called the "flex container".
+    (by setting display: flex to the container)
+
+    (2) All the direct children of the flex container are called the "flex items".
+
+    (3) Main Axis: The main axis is defined by flex-direction, which has four possible values.
+        (row, row-reverse, column, column-reverse)
+
+      Should you choose row or row-reverse, your main axis will run along the row in the inline direction.
+      Choose column or column-reverse and your main axis will run from the top of the page to the bottom — in the block direction.
+
+    (4) Cross Axis: The cross axis runs perpendicular to the main axis.
+
+3.  See more at Flexbox cheat sheet!
+    (flex-wrap, align-content are in advanced CSS)
+
+4.  We're intersted in manually defining space between flex items, mainly 2 ways:
+    (1) margin: not clean code (have to define for elements and remove extra margin for last element)
+
+    (2) gap: defined on the flex container, which is more clean and easy to see.
+
+
+
+////////////////////////////////////////////////////////////
+// The Flex Property
+
+1.  flex-basis: (1) Used when we want to size flex items with a width.(normally we don't use width property)
+
+                (2) Sets the initial main size of a flex item. (not rigid)
+
+                (3) If there's not enough space to fit the items with the size we defined, then flexbox will 
+                    shrink these items by default. (Since flex-shrink: 1, by default)
+
+2.  flex-shrink: (1) Used to determine whether flexbox is allowed to shrink element if necessary.
+
+                 (2) 1+ --> allowed to shrink, 0 --> not allowed to shrink
+
+                 (3) sets the flex shrink factor of a flex item. If the size of all flex items is larger 
+                     than the flex container, items shrink to fit according to flex-shrink.
+
+3.  flex-grow: (1) Determine whether items are allowed to grow as large as they can or not.
+
+               (2) the remaining empty space will be shared to flex items according to their grow factor 
+                   (factor 2 gets 2 times the empty space of factor 1)
+
+               e.g. if remaining empty space 600px, with 5 flex-items
+                    item 1 ~ 4 (flex-grow: 1): 100px of remaining space
+                    item 5 (flex-grow: 2): 200px of remaining space
+
+               (3) sets the flex grow factor of a flex item's main size
+
+               (4) Usually we'd set "flex-grow: 1" to all items.
+
+               (5) All the flex items will not end up having the same width, but will be increased by same unit. 
+                   (That same unit can be calculated by dividing the original extra space by the no. of flex items).
+
+4.  RULE OF THUMB: Always use flex property as shorthand of grow, shrink, basis.
+
+
+
+////////////////////////////////////////////////////////////
+// Applying Flexbox
+
+1.  When we have 2 items, and to push each of them to 1 side, we can use: 
+    
+    CSS:  justify-content: space-between
+
+2.  3 ways to add gap between image and related post:
+
+    (1) add margin-right to image
+    (2) add margin-left to div containg related post
+    (3) use "gap" property of flexbox (RECOMMENDED)
+
+3.  It's very common to add new <div>s in order to apply flexbox to the elements we want
+
+4.  For flex-items we should use flex-basis instead of width.
+
+5.  (1) Setting flex-grow: 1; means item can grow as much as it can.
+    (2) Setting flex-shrink: 1; means item can shrink as much as it can.
+    (3) Setting flex-basis: 0; means no matter how items grow, they'll have the same width.
+    (4) Setting flex-basis: auto; means items might have diffrent size if the item has other properties applied
+
+    See more: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical_Use_Cases_of_Flexbox#media_objects 
+
+6.  Main-axis alignment: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container#using_auto_margins_for_main_axis_alignment
+
+    (Auto margins will take up all of the space that they can in their axis — it is how centering a block with margin auto left and right works)
+
+7.  Setting flex: 1; allows element to grow as much as it can in the available space.
+
+NOTE: flex-basis decides the initial width of the element 
+      (0: no width, auto: look at initial size)
+
+-->   flex-grow distributes the empty space according to grow factor
+      (0: no grow, all 1: distribute evenly)
+      
+
+-->   flex-shrink: 0, then width won't shrink
+
+-->   flex: 0 0 100px, then fixed width 100px, if possible.
+
+-->   flex: 1, then all items have the same size.
+      (note that some item's initial size is too big, it might be bigger than others)
+
+IDEA: Think of flex-basis as the starting line of a moving pointer
+      --> different flex-basis starts at different locations
+      --> larger the grow factor, larger the path the pointer moves.
+      --> the area from start to end line is the final size
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+// Grid Box: Sizing Columns and Rows
+
+1.  Using fr (fraction) unit instead of px.
+    --> create more flexible columns and rows.
+
+2. fr: 1 fraction of available space
+
+3.  grid-template-columns: auto,  takes exactly the size of its content
+
+4.  When we didn't specify enough rows for the grid items, we'll get an implicit row.
+    (we actually have ways to style implicit rows, but that's more advanced)
+
+    --> just always define enough rows for items for now.
+
+5.  Usually using fr unit in columns is enough, we just left the rows to be filled automatically.
+
+6.  TRICK: use grid-column: 1 / -1 to span from left to right
+
+
+
+////////////////////////////////////////////////////////////
+// Aligning Grid Items and Tracks
+
+1.  we can align (1) tracks inside the container
+                 (2) grid items inside the tracks (since item might be smaller than the cell)
+
+
+2.  Aligning tracks inside the container: distributing empty space
+
+    (justify-content, align-content)
+
+3.  Aligning items inside the cells: moving items inside the cells
+
+4.  justify-content: Aligns the tracks along the row (main) axis.
+
+    align-content: Aligns the tracks along the column (cross) axis
+
+    justify-items: Aligns grid items (inside cells) along the row (main) axis.
+
+    align-items: Aligns grid items (inside cells) along the column (cross) axis.
+
+5.  For grid we use: start, end, center, ...
+    (DON't write flex-star, flex-end)
+
+6.  Note that justify-content, align-content only works if grid smaller than container.
+    (Which will happen only if we use non-flexible units like px.)
+
+
+
+////////////////////////////////////////////////////////////
+// Applying Gridbox
+
+1.  For simple 1-dimensional layouts: use flex-box! 
+
+    (1) Offers better control over space distribution, 1-d alignment.
+    (2) Allows change of layout direction.
+    (3) Simpler to write code, and is more intuitive.
+    (4) Clean code.
+
+
+    For 2-dimensional layouts: grid!
+
+
+2.  RULE OF THUMB: We usually concentrate all the styles about the grid in the grid container. 
+    (e.g., don't use margins for spacing, use gaps)
+
+    --> CLEANER CODE !!!!!
+
+3.  It's very common to only define grid-template-columns, to allow CSS to automatically adjust row height for us.
